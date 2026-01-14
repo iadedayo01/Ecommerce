@@ -1,7 +1,9 @@
 // import React from 'react'
 
-import CheckoutComponent from "../components/Cart/checkoutComponent";
-import TotalComponent from "../components/Cart/totalComponent";
+import CheckoutComponent from "../components/Cart/CheckoutComponent";
+import TotalComponent from "../components/Cart/TotalComponent";
+
+
 
 const Cart = () => {
   return (

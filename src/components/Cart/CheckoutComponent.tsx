@@ -22,7 +22,7 @@ interface tableBodyProps {
 
 const CheckoutComponent = () => {
 
-const [currentIndex, setCurrentIndex] = useState<null | number>(null)
+// const [currentIndex, setCurrentIndex] = useState<null | number>(null)
 
   const [count, setCount] = useState<number>(1);
 

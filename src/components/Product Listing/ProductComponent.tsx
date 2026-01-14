@@ -1,16 +1,16 @@
 // import React from 'react'
-import IM from "../../assets/image1.png";
-import IM2 from "../../assets/image2.png";
-import IM3 from "../../assets/image4.png";
+// import IM from "../../assets/image1.png";
+// import IM2 from "../../assets/image2.png";
+// import IM3 from "../../assets/image4.png";
 import { RiListRadio } from "react-icons/ri";
 import { CgMenuGridR } from "react-icons/cg";
 import { IoIosArrowDown } from "react-icons/io";
-import { FaArrowLeftLong, FaStar } from "react-icons/fa6";
+import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { useState, type ReactElement } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-interface productProps {
+export interface productProps {
   image: string;
   name: string;
   description: string;

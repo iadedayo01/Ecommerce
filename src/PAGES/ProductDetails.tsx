@@ -7,19 +7,16 @@ import ProductAddition from "../components/Product Details/ProductAddition";
 import ProductReviews from "../components/Product Details/ProductReviews";
 import SharedProducts from "../Shared/SharedProducts";
 import CompanyInfo from "../Shared/CompanyInfo";
-import { useLocation } from "react-router-dom";
+
+
 
 const ProductDetails = () => {
   const [activeTab, setActiveTab] = useState("description");
 
-  const location = useLocation()
-  const productInfoo = location.state.info
-
-  console.log(productInfoo,"product details")
   return (
     <>
       <div className="px-25 py-9">
-        <ProductInfo productInfoo={productInfoo}/>
+        <ProductInfo />
         <div className="flex border-b border-gray-300 gap-6">
           <h1
             className={` text-sm cursor-pointer ${

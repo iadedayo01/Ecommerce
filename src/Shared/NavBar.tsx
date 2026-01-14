@@ -37,7 +37,7 @@ const NavBar = () => {
             <Link to={nav.route}>
                 {nav.name}
             </Link>
-                <div onClick={()=> openModal}>{nav.icon}</div>
+                <div onClick={()=> setOpenModal(true)}>{nav.icon}</div>
               </div>
           </div>
         ))}
