@@ -19,7 +19,7 @@ const NavBar = () => {
   const [openModal, setOpenModal] = useState<boolean>(false)
 
   const navBar: NavProps[] = [
-    { name: "Home", route: "/home_page" },
+    { name: "Home", route: "/" },
     { name: "Shop", route: "/product_list", icon: <MdOutlineKeyboardArrowDown /> },
     { name: "Our Story", route: "/story" },
     { name: "Blog", route: "/blog" },
