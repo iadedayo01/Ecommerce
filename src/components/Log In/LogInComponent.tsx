@@ -4,8 +4,12 @@ import PI2 from "../../assets/Logo.png";
 import Button from "../../Shared/Button";
 import { PiHandWavingFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const LogInComponent = () => {
+
+  const [userName, setUserName] = useState(" ")
+  const [password, setPassword] = useState(" ")
   return (
     <div className=" relative dark:bg-[#FFFFFF] flex h-full w-full">
       {/* login banner image */}
@@ -45,6 +49,8 @@ const LogInComponent = () => {
               </label>
               <input
                 type="email"
+                value={userName}
+                onChange={() => setUserName()}
                 placeholder="robertfox@gmail.com"
                 className=" border py-2 px-4 w-full border-[#131118] rounded-sm"
               />

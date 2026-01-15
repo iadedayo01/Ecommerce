@@ -9,10 +9,10 @@ interface ModalProps {
 const ShopModal = ({ setOpenModal }: ModalProps) => {
   return (
     <div
-      className=" fixed inset-0 bg-[#344054B2] bg-opacity-40 flex justify-center items-center h-screen "
-      style={{ backdropFilter: "blur(7.06999969482422px)" }}
+      className="  inset-0 bg-transparent bg-opacity-40 absolute flex justify-center items-center h-screen "
+      
     >
-      <div className="bg-white size-90 rounded-lg">
+      <div className="bg-white relative bottom-5 w-120 h-80">
         <div className="flex p-5 justify-between">
           <h1 className="text-xl">SHOP</h1>
           <RxCross2 onClick={() => setOpenModal(false)}/>
