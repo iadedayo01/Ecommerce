@@ -8,10 +8,12 @@ import ProductList from "./PAGES/ProductList";
 import HomePage from "./PAGES/HomePage";
 import ProductDetails from "./PAGES/ProductDetails";
 import Cart from "./PAGES/Cart";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
     <div className="bg-white">
+      <Toaster />
       <Routes>
         <Route path="login" element={<LogIn />} />
         <Route path="signup" element={<SignUp />} />
@@ -19,7 +21,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="product_list" element={<ProductList />} />
           <Route path="product-details/:id" element={<ProductDetails />} />
-          <Route path="cart" element={<Cart/>}/>
+          <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>
     </div>

@@ -6,7 +6,7 @@ import IM3 from "../../assets/image4.png";
 import { useState } from "react";
 
 import type { ReactElement } from "react";
-import { FaTrash } from "react-icons/fa";
+import { GoTrash } from "react-icons/go";
 
 interface tableBodyProps {
   id: number;
@@ -44,7 +44,7 @@ const CheckoutComponent = () => {
       size: "Size: S",
       price: "$80.00",
       subtotal: "$80.00",
-      icon: <FaTrash />,
+      icon: <GoTrash />,
       addIcon: <FiPlus />,
       subIcon: <FiMinus />,
     },
@@ -55,7 +55,7 @@ const CheckoutComponent = () => {
       size: "Size: M",
       price: "$80.00",
       subtotal: "$80.00",
-      icon: <FaTrash />,
+      icon: <GoTrash />,
       addIcon: <FiPlus />,
       subIcon: <FiMinus />,
     },
@@ -66,7 +66,7 @@ const CheckoutComponent = () => {
       size: "Size: L",
       price: "$40.00",
       subtotal: "$40.00",
-      icon: <FaTrash />,
+      icon: <GoTrash />,
       addIcon: <FiPlus />,
       subIcon: <FiMinus />,
     },
@@ -80,7 +80,7 @@ const CheckoutComponent = () => {
               {tableHeader.map((header, index) => (
                 <td
                   key={index}
-                  className="py-4 px-6 text-lg border-b border-gray-300"
+                  className="py-4 px-4 text-lg border-b border-gray-300"
                 >
                   {header}
                 </td>
@@ -94,7 +94,7 @@ const CheckoutComponent = () => {
                 key={index}
                 className="border-b border-gray-300 hover:bg-gray-50 transition-colors text-xs "
               >
-                <td className="py-8 flex px-6">
+                <td className="py-8 flex px-4">
                   <div className="flex justify-center items-center gap-3">
                     <div className="size-20">
                       <img src={body.image} />
@@ -105,12 +105,12 @@ const CheckoutComponent = () => {
                     </div>
                   </div>
                 </td>
-                <td className="py-8 px-6">
+                <td className="py-8 px-4">
                   <h1 className="text-lg">{body.price}</h1>
                 </td>
-                <td className="py-8 px-6">
+                <td className="py-8 px-4">
                   <div className="flex items-center rounded-lg px-3 gap-2 py-1 outline">
-                    <button className="cursor-pointer" onClick={decrement}>
+                    <button key={body.id} className="cursor-pointer" onClick={decrement}>
                       {body.subIcon}
                     </button>
                     <p className="text-lg">{count}</p>
@@ -119,10 +119,10 @@ const CheckoutComponent = () => {
                     </button>
                   </div>
                 </td>
-                <td className="py-8 px-6">
+                <td className="py-8 px-4">
                   <h1 className="text-lg">{body.subtotal}</h1>
                 </td>
-                <td className="py-8 px-6">{body.icon}</td>
+                <td className="py-8 text-lg text-red-400 px-4">{body.icon}</td>
               </tr>
             ))}
           </tbody>

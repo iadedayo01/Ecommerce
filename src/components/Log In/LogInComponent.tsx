@@ -3,13 +3,42 @@ import PI from "../../assets/Rectangle.png";
 import PI2 from "../../assets/Logo.png";
 import Button from "../../Shared/Button";
 import { PiHandWavingFill } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const LogInComponent = () => {
+  const [username, setUsername] = useState(" ");
+  const [password, setPassword] = useState(" ");
 
-  const [userName, setUserName] = useState(" ")
-  const [password, setPassword] = useState(" ")
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    console.log(username);
+    console.log(password);
+
+    if (username === "" || password === "") {
+      toast.error("Please fill all the fields");
+    }
+
+    try {
+      const response = await axios.post("https://dummyjson.com/auth/login", {
+        username,
+        password,
+      });
+
+      console.log("response:", response.data);
+      localStorage.setItem("token:", response.data.accessToken)
+      toast.success("Login Successful");
+      navigate("/");
+
+
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data.message || "Login Failed")
+    }
+  };
   return (
     <div className=" relative dark:bg-[#FFFFFF] flex h-full w-full">
       {/* login banner image */}
@@ -38,19 +67,21 @@ const LogInComponent = () => {
             </div>
             <div className="flex items-end flex-col">
               <span className="text-sm">Don't have an account? </span>
-              <Link to="/signup" className="text-blue-300">SignUp</Link>
+              <Link to="/signup" className="text-blue-300">
+                SignUp
+              </Link>
             </div>
           </div>
           {/* form input */}
           <form className=" flex flex-col w-full gap-3">
             <div className="flex w-full flex-col">
               <label className=" font-normal  text-[#131118]" htmlFor="email">
-                Email Address
+                Username
               </label>
               <input
-                type="email"
-                value={userName}
-                onChange={() => setUserName()}
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 placeholder="robertfox@gmail.com"
                 className=" border py-2 px-4 w-full border-[#131118] rounded-sm"
               />
@@ -64,6 +95,8 @@ const LogInComponent = () => {
               </label>
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="*********"
                 className=" border py-2 px-4 border-[#131118] rounded-sm"
               />
@@ -85,6 +118,7 @@ const LogInComponent = () => {
               textColor="text-white"
               borderRadius="rounded-sm"
               padding="p-[20px]"
+              onclick={handleLogin}
             />
           </form>
         </div>
