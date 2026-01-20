@@ -107,7 +107,7 @@ const LogInComponent = () => {
                 <h4>Remember Me</h4>
               </div>
               <div>
-                <a href="#" className="text[#131118]">
+                <a href="/forgot_password" className="text[#131118]">
                   Forgot Password?
                 </a>
               </div>

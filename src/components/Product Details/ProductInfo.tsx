@@ -15,9 +15,12 @@ import axios from "axios";
 interface ProductInfoProps {
   id: number;
   images: string;
+  returnPolicy: string;
   brand: string;
   title: string;
   rating: string;
+  category: string;
+  availabilityStatus: string;
   price: string;
   discountPercentage: string;
   description: string;
@@ -31,6 +34,17 @@ interface ProductInfoProps {
 
 const ProductInfo = () => {
   // const [onSize, setOnSize] = useState<string>("S");
+
+  const colors = [
+    "bg-red-400",
+    "bg-blue-500",
+    "bg-orange-400",
+    "bg-black",
+    "bg-green-300",
+    "bg-yellow-400",
+  ];
+
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const [count, setCount] = useState<number>(1);
 
@@ -77,26 +91,41 @@ const ProductInfo = () => {
           Home &gt; Shop &gt; Women Textured Handheld Bag
         </h1>
       </div>
-      <div className="flex">
-        <div className="w-full basis-1/2">
-          <div className="size-80 outline">
+      <div className="flex w-full gap-10">
+        <div className={`w-full basis-1/2 ${selectedColor}`}>
+          <div className={`w-full h-full`}>
             <img src={product?.images} />
           </div>
         </div>
-        <div className="w-full basis-1/2 gap-8 flex flex-col">
+        <div className="w-full basis-1/2 gap-8 space-y-2 flex flex-col">
           {/* {productInfoo.map((info) => ( */}
-          <div className="space-y-2">
-            <h1 className="text-xl font-bold">{product?.brand}</h1>
-            <h1 className="text-sm">{product?.title}</h1>
-            <div className="flex">{product?.rating}</div>
-            <div className="flex gap-3 text-sm">
-              <h1>{product?.discountPercentage}</h1>
-              <h1 className="text-gray-400 line-through">{product?.price}</h1>
+          <div className="space-y-4">
+            <div className="flex justify-between">
+              <h1 className="text-xl font-bold">{product?.brand}</h1>
+              <div className="px-3 rounded-lg py-2 bg-amber-200">
+                <h1 className="text-amber-600">{product?.availabilityStatus}</h1>
+              </div>
             </div>
-            <h1 className="text-xs">{product?.description}</h1>
+            <h1 className="text-lg">{product?.title}</h1>
+            <h1 className="text-sm"> Category: {product?.category}</h1>
+            <h1 className="text-sm">Rating: {product?.rating}</h1>
+            <div className="flex gap-3 text-sm">
+              <h1 className="text-sm">${product?.discountPercentage}</h1>
+              <h1 className="text-gray-400 line-through">${product?.price}</h1>
+            </div>
+            <h1 className="text-sm">{product?.description}</h1>
             <div className="flex flex-col">
               <h1 className="font-bold text-sm">Color</h1>
+              <div className=" flex gap-2">
+                {colors.map((color) => (
+                  <div
+                    className={` cursor-pointer size-6 ${color}`}
+                    onClick={() => setSelectedColor(color)}
+                  ></div>
+                ))}
+              </div>
             </div>
+            <h1 className="text-sm">{product?.returnPolicy}</h1>
             <div className="flex flex-col"></div>
           </div>
           {/* ))} */}

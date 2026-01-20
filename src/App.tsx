@@ -9,6 +9,7 @@ import HomePage from "./PAGES/HomePage";
 import ProductDetails from "./PAGES/ProductDetails";
 import Cart from "./PAGES/Cart";
 import { Toaster } from "react-hot-toast";
+import ForgotPassword from "./PAGES/ForgotPassword";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Routes>
         <Route path="login" element={<LogIn />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="forgot_password" element={<ForgotPassword />} />
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="product_list" element={<ProductList />} />
