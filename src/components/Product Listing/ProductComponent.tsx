@@ -15,36 +15,35 @@ export interface productProps {
   images: string;
   title: string;
   description: string;
-  details: string;
-  discountedPrice: string;
-  // icon: ReactElement;
-  color: string[];
-  size: string[];
+  discountPercentage: string;
   price: string;
   id: number;
 }
 
 const ProductComponent = () => {
   const [onPage, setOnPage] = useState<null | number>(null);
-  const [productss, setProductss] = useState<productProps[]>([]);
+  const [products, setProducts] = useState<productProps[]>([]);
 
   const pageNumber = [1, 2, 3, 4, 5];
 
   // https://dummyjson.com/products
 
   const fetchProducts = async () => {
+    const response = await axios.get("https://dummyjson.com/products");
+    console.log(response);
+
     try {
-      const response = await axios.get("https://dummyjson.com/products");
-      console.log(response);
-      setProductss(response.data.products)
-      console.log("products:", productss)
-    } catch (error) {}
+      if (response.status === 200) {
+        setProducts(response.data.products);
+      }
+    } catch (error: any) {
+      console.error("Error fetching products:", error);
+    }
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
-
 
   return (
     <div className="px-10 flex-1 py-18">
@@ -60,13 +59,16 @@ const ProductComponent = () => {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-3 py-5 grid-rows-5">
-        {productss.map((info) => (
-          <Link to={`/product-details/${info.id}`} state={{ info }}>
+        {products.map((info) => (
+          <Link to={`/product-details/${info.id}`} state={{ id:info.id }}>
             <div>
               <img src={info.images} />
               <h1 className="text-sm font-bold">{info.title}</h1>
               <h1 className="text-xs">{info.description}</h1>
-              <h1 className="text-xs">{info.price}</h1>
+              <div className="flex gap-3">
+                <h1 className="text-xs">{info.price}</h1>
+                <h1 className="text-xs line-through">{info.discountPercentage}</h1>
+              </div>
             </div>
           </Link>
         ))}

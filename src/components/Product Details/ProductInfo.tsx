@@ -1,9 +1,10 @@
 // import React from 'react'
-import { useState, type ReactElement } from "react";
+import { useEffect, useState } from "react";
 // import { FaStar } from "react-icons/fa6";
 import { FiHeart, FiMinus, FiPlus } from "react-icons/fi";
 import Button from "../../Shared/Button";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 // import type { productProps } from "../Product Listing/ProductComponent";
 
 // import prod1 from "../../assets/Product1.png";
@@ -12,12 +13,13 @@ import { useLocation } from "react-router-dom";
 // import prod4 from "../../assets/Product4.png";
 
 interface ProductInfoProps {
-  id: number
-  name: string;
-  details: string;
-  icon: ReactElement;
+  id: number;
+  images: string;
+  brand: string;
+  title: string;
+  rating: string;
   price: string;
-  discountedPrice: string;
+  discountPercentage: string;
   description: string;
   color: string[];
   size: string[];
@@ -28,9 +30,11 @@ interface ProductInfoProps {
 // }
 
 const ProductInfo = () => {
-  const [onSize, setOnSize] = useState<string>("S");
+  // const [onSize, setOnSize] = useState<string>("S");
 
   const [count, setCount] = useState<number>(1);
+
+  const [product, setProduct] = useState<ProductInfoProps | null>();
 
   const increment = () => {
     setCount((prev) => prev + 1);
@@ -40,16 +44,31 @@ const ProductInfo = () => {
     setCount((prev) => prev - 1);
   };
 
-  
-  const location = useLocation()
-  const productInfoo = location.state.info as ProductInfoProps
+  const location = useLocation();
+  const id = location.state.id as ProductInfoProps;
 
-  console.log(productInfoo,"product details")
-  console.log(productInfoo, "jhgf");
+  // console.log(product,"product details")
+  // console.log(product, "jhgf");
 
-  const name = ["ghgjk", "hgjjk", "gjvhk", "gvhbnmhj"];
-  console.log(name[0]);
-  // const products = [prod1, prod2, prod3, prod4];
+  const fetchSingleProduct = async () => {
+    const response = await axios.get(`https://dummyjson.com/products/${id}`);
+    console.log(response);
+
+    try {
+      // if (response.status === 304) {
+      setProduct(response.data);
+      console.log(product);
+      // }
+    } catch (error: any) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  console.log(product);
+
+  useEffect(() => {
+    fetchSingleProduct();
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -59,51 +78,26 @@ const ProductInfo = () => {
         </h1>
       </div>
       <div className="flex">
-        <div className="w-full basis-1/2"></div>
+        <div className="w-full basis-1/2">
+          <div className="size-80 outline">
+            <img src={product?.images} />
+          </div>
+        </div>
         <div className="w-full basis-1/2 gap-8 flex flex-col">
           {/* {productInfoo.map((info) => ( */}
           <div className="space-y-2">
-            <h1 className="text-xl font-bold">{productInfoo.name}</h1>
-            <h1 className="text-sm">{productInfoo.details}</h1>
-            <div className="flex">
-              {productInfoo.icon}
-              {productInfoo.icon}
-              {productInfoo.icon}
-              {productInfoo.icon}
-              {productInfoo.icon}
-            </div>
+            <h1 className="text-xl font-bold">{product?.brand}</h1>
+            <h1 className="text-sm">{product?.title}</h1>
+            <div className="flex">{product?.rating}</div>
             <div className="flex gap-3 text-sm">
-              <h1>{productInfoo.discountedPrice}</h1>
-              <h1 className="text-gray-400 line-through">
-                {productInfoo.price}
-              </h1>
+              <h1>{product?.discountPercentage}</h1>
+              <h1 className="text-gray-400 line-through">{product?.price}</h1>
             </div>
-            <h1 className="text-xs">{productInfoo.description}</h1>
+            <h1 className="text-xs">{product?.description}</h1>
             <div className="flex flex-col">
               <h1 className="font-bold text-sm">Color</h1>
-              <div className="flex gap-2">
-                {productInfoo.color.map((colr: string) => (
-                  <div
-                    className={`size-7 rounded-sm cursor-pointer  ${colr}`}
-                  ></div>
-                ))}
-              </div>
             </div>
-            <div className="flex flex-col">
-              <h1 className="text-sm font-bold">Size</h1>
-              <div className="flex gap-2">
-                {productInfoo.size.map((size: string) => (
-                  <div
-                    className={`size-7 text-sm justify-center rounded-sm cursor-pointer items-center flex outline ${
-                      onSize == size ? "bg-black text-white" : ""
-                    }`}
-                    onClick={() => setOnSize(size)}
-                  >
-                    {size}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <div className="flex flex-col"></div>
           </div>
           {/* ))} */}
           <div className=" flex justify-between">
