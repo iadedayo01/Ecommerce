@@ -10,7 +10,7 @@ interface ButtonProps {
   BG: string;
   padding: string;
   borderRadius: string;
-  onclick?: ()=> void
+  onclick?: () => void;
 }
 
 const Button = ({
@@ -25,7 +25,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <div
-      className={` justify-center flex items-center gap-2 cursor-pointer ${borderRadius} ${width} ${textColor} ${BG} ${padding}`}
+      className={` justify-center text-sm flex items-center gap-2 cursor-pointer ${borderRadius} ${width} ${textColor} ${BG} ${padding}`}
       onClick={onclick}
     >
       {text}

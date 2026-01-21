@@ -7,11 +7,11 @@ import Button from "../../Shared/Button";
 const ForgotPasswordComponent = () => {
   return (
     <div className=" h-full flex w-full ">
-      <div className=" basis-1/2 h-screen w-full">
-        <img src={IM} />
+      <div className=" basis-[55%] h-screen w-full">
+        <img className="object-fit" src={IM} />
       </div>
       {/* Form */}
-      <div className=" basis-1/2 h-screen space-y-3 max-w-110 flex justify-center items-start pl-10 flex-col">
+      <div className=" basis-[45%] h-screen space-y-3 max-w-110 flex justify-center items-start pl-10 flex-col">
         <Link to="/login">
           <div className="flex items-center">
             <div>
@@ -36,13 +36,15 @@ const ForgotPasswordComponent = () => {
               className=" border py-2 px-4 w-full rounded-sm border-[#131118]"
             />
           </div>
-          <Button
-            text="Send OTP"
-            BG="bg-[#131118]"
-            textColor="text-white"
-            borderRadius="rounded-sm"
-            padding="py-2 px-20"
-          />
+          <Link to="/otp">
+            <Button
+              text="Send OTP"
+              BG="bg-[#131118]"
+              textColor="text-white"
+              borderRadius="rounded-sm"
+              padding="py-2 px-20"
+            />
+          </Link>
         </form>
       </div>
     </div>

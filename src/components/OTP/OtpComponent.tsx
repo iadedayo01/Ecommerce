@@ -25,11 +25,26 @@ const OtpComponent = () => {
         </h1>
         <form className="flex flex-col">
           <div className="flex gap-2">
-            <input type="text" className="border size-8 rounded-lg"/>
-            <input className="border flex p-4 size-8 rounded-lg"/>
-            <input className="border size-8 rounded-lg"/>
-            <input className="border size-8 rounded-lg"/>
-            <input className="border size-8 rounded-lg"/>
+            <input
+              type="text"
+              className="border text-center size-8 rounded-lg"
+            />
+            <input
+              type="text"
+              className="border text-center size-8 rounded-lg"
+            />
+            <input
+              type="text"
+              className="border text-center size-8 rounded-lg"
+            />
+            <input
+              type="text"
+              className="border text-center size-8 rounded-lg"
+            />
+            <input
+              type="text"
+              className="border text-center size-8 rounded-lg"
+            />
           </div>
         </form>
       </div>

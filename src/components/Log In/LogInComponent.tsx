@@ -29,7 +29,8 @@ const LogInComponent = () => {
       });
 
       console.log("response:", response.data);
-      localStorage.setItem("token:", response.data.accessToken)
+      localStorage.setItem("token", response.data.accessToken)
+      localStorage.setItem("UserID", response.data.id)
       toast.success("Login Successful");
       navigate("/");
 
