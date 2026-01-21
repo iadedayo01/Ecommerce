@@ -44,7 +44,7 @@ const CheckoutComponent = () => {
 
   // const [currentIndex, setCurrentIndex] = useState<null | number>(null)
 
-  const [count, setCount] = useState<number>(1);
+  const [_, setCount] = useState<number>(1);
 
   const increment = () => {
     setCount((prev) => prev + 1);
