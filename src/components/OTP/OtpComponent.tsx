@@ -2,8 +2,13 @@
 import { Link } from "react-router-dom";
 import IM from "../../assets/OTPImg.png";
 import { IoIosArrowBack } from "react-icons/io";
+import Button from "../../Shared/Button";
 
-const OtpComponent = () => {
+interface ModalProps {
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const OtpComponent = ({ setOpenModal }: ModalProps) => {
   return (
     <div className="h-full w-full flex">
       <div className=" h-screen w-full basis-1/2">
@@ -23,7 +28,7 @@ const OtpComponent = () => {
           We have sent a code to your registered email address
           robertfox@gmail.com
         </h1>
-        <form className="flex flex-col">
+        <form className="flex space-y-4 flex-col">
           <div className="flex gap-2">
             <input
               type="text"
@@ -46,6 +51,14 @@ const OtpComponent = () => {
               className="border text-center size-8 rounded-lg"
             />
           </div>
+          <Button
+            text="Verify"
+            BG="bg-[#131118]"
+            textColor="text-white"
+            borderRadius="rounded-sm"
+            padding="py-2 px-4"
+            onclick={() => setOpenModal(true)}
+          />
         </form>
       </div>
     </div>
