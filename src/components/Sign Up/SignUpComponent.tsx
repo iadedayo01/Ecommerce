@@ -9,16 +9,20 @@ const SignUpComponent = () => {
     <div
       className=" flex relative md:bg-[#FFFFFF] h-full w-full"
       style={{
-        backgroundImage: `url(${PI})`, backgroundPosition: "center", backgroundSize: "cover7"
+        backgroundImage: `url(${PI})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover7",
       }}
     >
       <div className=" bg-black opacity-60 md:opacity-0 md:bg-none absolute h-screen w-full"></div>
       {/* signup banner image */}
       <div className="h-full w-full basis-1/2 hidden md:block">
         <img src={PI} className="object-cover h-full w-full" />
-        <div className="absolute top-10 left-10">
-          <img src={PI2} />
-        </div>
+        <Link to="/">
+          <div className="absolute top-10 left-10">
+            <img src={PI2} />
+          </div>
+        </Link>
       </div>
       {/* form */}
       <div className="md:basis-1/2 flex flex-col px-20 md:h-full w-full items-center justify-center bg-white opacity-80 md:bg-none shadow-2xl">

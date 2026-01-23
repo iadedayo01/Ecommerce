@@ -8,7 +8,7 @@ const ForgotPasswordComponent = () => {
   return (
     <div className=" h-full flex w-full ">
       <div className=" basis-[55%] h-screen w-full">
-        <img className="object-fit" src={IM} />
+        <img className=" h-full w-full object-cover" src={IM} />
       </div>
       {/* Form */}
       <div className=" basis-[45%] h-screen space-y-3 max-w-110 flex justify-center items-start pl-10 flex-col">

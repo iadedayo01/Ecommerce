@@ -7,7 +7,7 @@ const OtpComponent = () => {
   return (
     <div className="h-full w-full flex">
       <div className=" h-screen w-full basis-1/2">
-        <img src={IM} alt="Image" />
+        <img className=" h-full w-full object-cover" src={IM} alt="Image" />
       </div>
       <div className=" h-screen w-full basis-1/2 max-w-110 justify-center items-start pl-10 space-y-3 flex flex-col">
         <Link to="/forgot_password">

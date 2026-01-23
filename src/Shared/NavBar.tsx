@@ -16,36 +16,44 @@ interface NavProps {
 }
 
 const NavBar = () => {
-  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const navBar: NavProps[] = [
     { name: "Home", route: "/" },
-    { name: "Shop", route: "/product_list", icon: <MdOutlineKeyboardArrowDown /> },
+    {
+      name: "Shop",
+      route: "/product_list",
+      icon: <MdOutlineKeyboardArrowDown />,
+    },
     { name: "Our Story", route: "/story" },
     { name: "Blog", route: "/blog" },
     { name: "Contact Us", route: "/contact" },
   ];
   return (
     <div className="flex py-4 justify-between px-20">
-      <div>
-        <img src={PI2} />
-      </div>
+      <Link to="/">
+        <div>
+          <img src={PI2} />
+        </div>
+      </Link>
       <div className="flex gap-8 items-center">
         {navBar.map((nav) => (
           <div className="cursor-pointer items-center ">
-              <div className="flex items-center">
-            <Link to={nav.route}>
-                {nav.name}
-            </Link>
-                <div onClick={()=> setOpenModal(true)}>{nav.icon}</div>
-              </div>
+            <div className="flex items-center">
+              <Link to={nav.route}>{nav.name}</Link>
+              <div onClick={() => setOpenModal(true)}>{nav.icon}</div>
+            </div>
           </div>
         ))}
       </div>
       <div className="flex gap-2 items-center">
         <CiSearch className="text-2xl" />
         <CiHeart className="text-2xl" />
-        <button><Link to="/cart"><HiOutlineShoppingBag className="text-2xl" /></Link></button>
+        <button>
+          <Link to="/cart">
+            <HiOutlineShoppingBag className="text-2xl" />
+          </Link>
+        </button>
         <Link to="/login">
           <Button
             text="Login"
@@ -57,7 +65,7 @@ const NavBar = () => {
         </Link>
       </div>
 
-      {openModal && <ShopModal setOpenModal={setOpenModal}/>}
+      {openModal && <ShopModal setOpenModal={setOpenModal} />}
     </div>
   );
 };

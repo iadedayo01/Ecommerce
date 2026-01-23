@@ -29,15 +29,13 @@ const LogInComponent = () => {
       });
 
       console.log("response:", response.data);
-      localStorage.setItem("token", response.data.accessToken)
-      localStorage.setItem("UserID", response.data.id)
+      localStorage.setItem("token", response.data.accessToken);
+      localStorage.setItem("UserID", response.data.id);
       toast.success("Login Successful");
       navigate("/");
-
-
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data.message || "Login Failed")
+      toast.error(error.response.data.message || "Login Failed");
     }
   };
   return (
@@ -45,9 +43,11 @@ const LogInComponent = () => {
       {/* login banner image */}
       <div className=" h-screen basis-1/2 w-full">
         <img src={PI} className=" h-full w-full object-cover" />
-        <div className="absolute top-15 left-15">
-          <img src={PI2} />
-        </div>
+        <Link to="/">
+          <div className="absolute top-15 left-15">
+            <img src={PI2} />
+          </div>
+        </Link>
       </div>
       {/* form */}
       <div className=" basis-1/2 flex flex-col px-20 items-start justify-center w-full h-full ">
