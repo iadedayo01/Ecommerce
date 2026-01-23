@@ -24,6 +24,8 @@ const ProductComponent = () => {
   const [onPage, setOnPage] = useState<null | number>(null);
   const [products, setProducts] = useState<productProps[]>([]);
 
+  const [addCart, setAddCart] = useState<number | null>(null);
+
   const pageNumber = [1, 2, 3, 4, 5];
 
   // https://dummyjson.com/products
@@ -59,18 +61,29 @@ const ProductComponent = () => {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-3 py-5 grid-rows-5">
-        {products.map((info) => (
-          <Link to={`/product-details/${info.id}`} state={{ id:info.id }}>
-            <div>
-              <img src={info.images} />
-              <h1 className="text-sm font-bold">{info.title}</h1>
-              <h1 className="text-xs">{info.description}</h1>
-              <div className="flex gap-3">
-                <h1 className="text-xs">{info.price}</h1>
-                <h1 className="text-xs line-through">{info.discountPercentage}</h1>
-              </div>
+        {products.map((info, index) => (
+          <div
+            className="relative px-10 hover:bg-gray-200"
+            onMouseEnter={() => setAddCart(index)}
+            onMouseLeave={() => setAddCart(null)}
+          >
+            <img src={info.images} />
+            <h1 className="text-sm font-bold">{info.title}</h1>
+            <h1 className="text-xs">{info.description}</h1>
+            <div className="flex gap-3">
+              <h1 className="text-xs">{info.price}</h1>
+              <h1 className="text-xs line-through">
+                {info.discountPercentage}
+              </h1>
             </div>
-          </Link>
+            <Link to={`/product-details/${info.id}`} state={{ id: info.id }}>
+              {addCart == index && (
+                <div className="  bg-white left-15 py-2 px-4 rounded-lg items-center flex justify-center absolute bottom-10">
+                  <h1 className="text-black">Add to Cart</h1>
+                </div>
+              )}
+            </Link>
+          </div>
         ))}
       </div>
       <div className="flex gap-3 items-center justify-end">
