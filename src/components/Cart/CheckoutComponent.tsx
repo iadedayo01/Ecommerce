@@ -3,7 +3,6 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 
 import { useEffect, useState } from "react";
 
-// import type { ReactElement } from "react";
 import { GoTrash } from "react-icons/go";
 import axios from "axios";
 

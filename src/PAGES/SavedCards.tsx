@@ -2,7 +2,7 @@
 
 const SavedCards = () => {
   return (
-    <div>SavedCards</div>
+    <div className="bg-amber-400 h-full">SavedCards</div>
   )
 }
 
