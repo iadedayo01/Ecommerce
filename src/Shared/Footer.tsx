@@ -65,7 +65,7 @@ const Footer = () => {
   ];
 
   const InfoFooter: InfoFooterProps[] = [
-    { name: "My Account", route: "/account" },
+    { name: "My Account", route: "/profile" },
     { name: "Login", route: "/login" },
     { name: "My Cart", route: "/cart" },
     { name: "My Wishlist", route: "/wishlist" },
