@@ -54,7 +54,7 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className=" flex flex-col border border-gray-300 py-5">
+    <div className=" flex flex-col shadow border border-gray-300 py-5">
       <div className="flex gap-4 px-5 ">
         <div className="size-13 rounded-full">
           <img className=" h-full w-full rounded-full" src={IM} />

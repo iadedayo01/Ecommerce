@@ -24,7 +24,7 @@ export default function Toggle({
       {label && <span className="text-sm font-medium">{label}</span>}
       <button
         onClick={handleToggle}
-        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+        className={`relative inline-flex h-8 w-13 cursor-pointer items-center rounded-full transition-colors ${
           enabled ? "bg-green-500" : "bg-gray-300"
         }`}
       >
